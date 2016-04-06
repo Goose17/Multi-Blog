@@ -1,0 +1,46 @@
+use cs332;
+
+drop table if exists Comments;
+drop table if exists Posts;
+drop table if exists Users;
+
+create table Users (
+	username VARCHAR(64) NOT NULL PRIMARY KEY,
+	admin_status TINYINT NOT NULL,
+	password VARCHAR(64) NOT NULL
+);
+
+alter table Users add INDEX(admin_status);
+
+create table Posts (
+	title VARCHAR(64) NOT NULL,
+	p_content MEDIUMTEXT NOT NULL,
+	rating INT NOT NULL,
+	flags INT NOT NULL,
+	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	post_id INT AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(64) NOT NULL
+);
+
+alter table Posts add FOREIGN KEY(username) references Users(username);
+alter table Posts add INDEX(rating);
+alter table Posts add INDEX(flags);
+alter table Posts add INDEX(time_stamp);
+alter table Posts add INDEX(title);
+
+create table Comments (
+	username VARCHAR(64) NOT NULL,
+	post_id INT NOT NULL,
+	c_content MEDIUMTEXT NOT NULL,
+	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	rating INT NOT NULL,
+	flags INT NOT NULL,
+	comment_id INT AUTO_INCREMENT PRIMARY KEY
+);
+
+alter table Comments add FOREIGN KEY(username) references Users(username);
+alter table Comments add FOREIGN KEY(post_id) references Posts(post_id);
+alter table Comments add INDEX(time_stamp);
+alter table Comments add INDEX(flags);
+alter table Comments add INDEX(rating);
+
