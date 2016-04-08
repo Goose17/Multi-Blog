@@ -14,12 +14,13 @@ alter table Users add INDEX(admin_status);
 
 create table Posts (
 	title VARCHAR(64) NOT NULL,
-	p_content MEDIUMTEXT NOT NULL,
+	content MEDIUMTEXT NOT NULL,
 	rating INT NOT NULL,
 	flags INT NOT NULL,
 	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	post_id INT AUTO_INCREMENT PRIMARY KEY,
-	username VARCHAR(64) NOT NULL
+	username VARCHAR(64) NOT NULL,
+	parent INT DEFAULT NULL
 );
 
 alter table Posts add FOREIGN KEY(username) references Users(username);
@@ -27,20 +28,14 @@ alter table Posts add INDEX(rating);
 alter table Posts add INDEX(flags);
 alter table Posts add INDEX(time_stamp);
 alter table Posts add INDEX(title);
+alter table Posts add INDEX(parent);
 
-create table Comments (
-	username VARCHAR(64) NOT NULL,
-	post_id INT NOT NULL,
-	c_content MEDIUMTEXT NOT NULL,
-	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	rating INT NOT NULL,
-	flags INT NOT NULL,
-	comment_id INT AUTO_INCREMENT PRIMARY KEY
-);
+insert into Users(username, admin_status, password) values("Master Chief", 0, "Is Cool");
+insert into Users(username, admin_status, password) values("Samus Aran", 0, "Is Cooler");
 
-alter table Comments add FOREIGN KEY(username) references Users(username);
-alter table Comments add FOREIGN KEY(post_id) references Posts(post_id);
-alter table Comments add INDEX(time_stamp);
-alter table Comments add INDEX(flags);
-alter table Comments add INDEX(rating);
-
+insert into Posts(title, content, rating, flags, username) values("First!", "Let it be known that Master Chief is first in all things.",
+1, 0, "Master Chief");
+insert into Posts(title, content, rating, flags, username) values("Lorem ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+0, 0, "Samus Aran");
+insert into Posts(title, content, rating, flags, username, parent) values("stfu", "Come at me scrublord Samus Aran is better",
+0, 1, "Samus Aran", 1);
