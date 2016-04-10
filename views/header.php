@@ -9,9 +9,9 @@
     <body>
         <nav class="navbar-default navbar-fixed-top navbar">
             <div class="container">
-                <a href="#" class="navbar-brand">Home</a>
-                <button class="navbar-btn btn btn-primary navbar-right">Create post</button>
-                <button class="navbar-btn btn btn-primary navbar-right" style="padding-left: 20px;">Sign In/Register</button>
+                <button class="navbar-btn btn btn-primary" style="padding-left: 20px;">Sign In/Register</button>
+                <button class="navbar-btn btn btn-primary">Create post</button>
+                <a href="#" class="navbar-brand navbar-right">Home</a>
             </div>
         </nav>
     
