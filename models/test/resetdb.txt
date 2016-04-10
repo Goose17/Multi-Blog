@@ -15,8 +15,8 @@ alter table Users add INDEX(admin_status);
 create table Posts (
 	title VARCHAR(64) NOT NULL,
 	content MEDIUMTEXT NOT NULL,
-	rating INT NOT NULL,
-	flags INT NOT NULL,
+	rating INT NOT NULL DEFAULT 0,
+	flags INT NOT NULL DEFALUT 0,
 	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	post_id INT AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) NOT NULL,

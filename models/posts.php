@@ -7,17 +7,16 @@ function request($db) {
 
 function Drop($id, $db){
         
-    $drop = $db->prepare("delete from hw4students where id=:id;");
+    $drop = $db->prepare("delete from Posts where id=:id;");
     $drop->bindParam(':id', $id, PDO::PARAM_INT);
     $drop->execute();
 }
     
-function Add($firstin, $lastin, $genderin, $gradin, $db){
+function Add($title, $content, $userName, $db){
             
-    $insert = $db->prepare('insert into hw4students(first, last, gender, grad) values(:firstin, :lastin, :genderin, :gradin)');
-    $insert->bindParam(':firstin', $firstin, PDO::PARAM_STR);
-    $insert->bindParam(':lastin', $lastin, PDO::PARAM_STR);
-    $insert->bindParam(':genderin', $genderin, PDO::PARAM_STR);
-    $insert->bindParam(':gradin', $gradin, PDO::PARAM_INT); //the year works for normal years
+    $insert = $db->prepare('insert into Posts(title, content, username) values(:title, :content, :username);');
+    $insert->bindParam(':title', $title, PDO::PARAM_STR);
+    $insert->bindParam(':content', $content, PDO::PARAM_STR);
+    $insert->bindParam(':username', $userName, PDO::PARAM_STR);
     $insert->execute();
 }
