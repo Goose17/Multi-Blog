@@ -6,8 +6,8 @@
         <title>Blog</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
-    <body>
-        <nav class="navbar-default navbar-fixed-top navbar">
+    <body style="padding-top: 70px;">
+        <nav class="navbar-default navbar navbar-fixed-top">
             <div class="container">
                 <button class="navbar-btn btn btn-primary" style="padding-left: 20px;">Sign In/Register</button>
                 <button class="navbar-btn btn btn-primary">Create post</button>
