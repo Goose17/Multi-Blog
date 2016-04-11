@@ -13,7 +13,7 @@ create table Users (
 alter table Users add INDEX(admin_status);
 
 create table Posts (
-	title VARCHAR(64) NOT NULL,
+	title VARCHAR(64) DEFAULT NULL,
 	content MEDIUMTEXT NOT NULL,
 	rating INT NOT NULL DEFAULT 0,
 	flags INT NOT NULL DEFALUT 0,
