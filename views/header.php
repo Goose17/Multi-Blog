@@ -9,9 +9,11 @@
     <body style="padding-top: 70px;">
         <nav class="navbar-default navbar navbar-fixed-top">
             <div class="container">
-                <button class="navbar-btn btn btn-primary" style="padding-left: 20px;">Sign In/Register</button>
-                <button class="navbar-btn btn btn-primary">Create post</button>
-                <a href="#" class="navbar-brand navbar-right">Home</a>
+                <a href="index.php" class="navbar-brand">Home</a>
+                <div class="navbar-right">
+                    <a href="sign-in-control.php"><button class="navbar-btn btn btn-primary">Sign In/Register</button></a>
+                    <a><button class="navbar-btn btn btn-primary">Create post</button></a>
+                </div>
             </div>
         </nav>
     
