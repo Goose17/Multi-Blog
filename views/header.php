@@ -11,7 +11,7 @@
             <div class="container">
                 <a href="index.php" class="navbar-brand">Home</a>
                 <div class="navbar-right">
-                    <a href="sign-in-control.php"><button class="navbar-btn btn btn-primary">Sign In/Register</button></a>
+                    <a href="sign-in-control.php"><button class="navbar-btn btn btn-primary">Login/Register</button></a>
                     <a><button class="navbar-btn btn btn-primary">Create post</button></a>
                 </div>
             </div>
