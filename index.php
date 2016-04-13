@@ -15,6 +15,6 @@ if (!isset($db)) {
     
 }
 
-require('views/header.php');
+require((isset($_SESSION['username']) ? 'views/user-header.php' : 'views/header.php'));
 require('views/post-display.php');
 require('views/footer.php');
