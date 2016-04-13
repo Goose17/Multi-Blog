@@ -36,3 +36,24 @@ function ratingUp($postid, $db){
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
 }
+
+function ratingDown($postid, $db){
+            
+    $insert = $db->prepare('update Posts set rating = rating - 1 where post_id=:id;');
+    $insert->bindParam(':id', $postid, PDO::PARAM_INT);
+    $insert->execute();
+}
+
+function flagUp($postid, $db){
+            
+    $insert = $db->prepare('update Posts set flags = flags + 1 where post_id=:id;');
+    $insert->bindParam(':id', $postid, PDO::PARAM_INT);
+    $insert->execute();
+}
+
+function removeFlags($postid, $db){
+            
+    $insert = $db->prepare('update Posts set flags = 0 where post_id=:id;');
+    $insert->bindParam(':id', $postid, PDO::PARAM_INT);
+    $insert->execute();
+}
