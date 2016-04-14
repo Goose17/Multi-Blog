@@ -10,10 +10,14 @@
                     <p><?php echo htmlentities($post['content']); ?></p>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
-                    <button class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
-                    <button class="btn btn-default"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>
-                    <button class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Comment</button>
+                    <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+                    <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
+                    <strong style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
+                    <div class="pull-right">
+                        <!-- I'm thinking we show number of flags to admins only? -->
+                        <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                        <a class="btn btn-default <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Comment</a>
+                    </div>
                 </div>
             </div>
         </div>
