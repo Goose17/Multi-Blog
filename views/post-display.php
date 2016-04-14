@@ -1,6 +1,6 @@
         <?php foreach ($posts as $post): ?>
         <div class="container">
-            <div class="panel panel-info">
+            <div class="panel panel-info" id="panel-info">
                 <div class="panel-heading">
                     <h3><?php echo htmlentities($post['title']); ?></h3>
                     <small><?php echo htmlentities($post['username']); ?></small>
@@ -10,9 +10,10 @@
                     <p><?php echo htmlentities($post['content']); ?></p>
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+                    <a class="btn btn-default" role="button" id="thumbs-up"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
                     <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
-                    <strong style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
+                    <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
+                    <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
                     <div class="pull-right">
                         <!-- I'm thinking we show number of flags to admins only? -->
                         <a class="btn btn-default" role="button"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>

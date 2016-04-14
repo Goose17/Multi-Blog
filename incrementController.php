@@ -17,17 +17,17 @@ if (isset($_POST['task'])){
            require_once('models/posts.php');
            ratingUp($_POST['postid'], $db);
            
-           echo("ratingUp Successful")
+           echo("ratingUp successful");
         }
         
-        if ($_POST['task'] == 'ratingDown' && isset($_POST['postid'])) {
+        elseif ($_POST['task'] == 'ratingDown' && isset($_POST['postid'])) {
            
            require_once('models/posts.php');
            ratingDown($_POST['postid'], $db);
            
         }
         
-        if ($_POST['task'] == 'flagUp' && isset($_POST['postid'])) {
+        elseif ($_POST['task'] == 'flagUp' && isset($_POST['postid'])) {
            
            require_once('models/posts.php');
            flagUp($_POST['postid'], $db);
