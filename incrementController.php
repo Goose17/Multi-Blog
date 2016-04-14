@@ -25,6 +25,7 @@ if (isset($_POST['task'])){
            require_once('models/posts.php');
            ratingDown($_POST['postid'], $db);
            
+           echo("ratingDown successful");
         }
         
         elseif ($_POST['task'] == 'flagUp' && isset($_POST['postid'])) {
@@ -32,6 +33,7 @@ if (isset($_POST['task'])){
            require_once('models/posts.php');
            flagUp($_POST['postid'], $db);
            
+           echo("flag successful");
         }
         
     }
