@@ -6,6 +6,9 @@
                     <h3><?php echo htmlentities($post['title']); ?></h3>
                     <small><?php echo htmlentities($post['username']); ?></small>
                     <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
+                    <div class="pull-right">
+                        <small id="time-stamp"><?php echo htmlentities($post['time_stamp']); ?></small>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <p><?php echo htmlentities($post['content']); ?></p>
