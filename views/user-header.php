@@ -12,7 +12,7 @@
                 <a href="index.php" class="navbar-brand">Home</a>
                 <div class="navbar-right">
                     <p class="navbar-text"><?php echo $_SESSION['username']; ?></p>
-                    <a><button class="navbar-btn btn btn-primary">Create Post</button></a>
+                    <a href="postController.php"><button class="navbar-btn btn btn-primary">Create Post</button></a>
                     <a href="logout.php"><button class="navbar-btn btn btn-primary">Logout</button></a>
                 </div>
             </div>
