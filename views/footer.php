@@ -4,6 +4,8 @@
     <script>
         $(document).ready(function() {
             
+            $("form input").eq(0).focus();
+            
             // Helper function returns true when form is ok to be submitted and false otherwise.
             function validate() {
                 // Check to make sure username input is set and is at least 1 character.
