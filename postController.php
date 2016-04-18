@@ -36,6 +36,6 @@ if (isset($_POST['task'])){
     }
 }
 
-require('views/header.php');
+require('views/user-header.php');
 require('views/create-post-form.php');
 require('views/footer.php');
