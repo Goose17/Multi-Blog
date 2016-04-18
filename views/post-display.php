@@ -25,7 +25,7 @@
                         <a class="btn btn-default" role="button" id="flag"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
                         <input type="hidden" name="flags" value="<?php echo htmlentities($post['flags']); ?>">
                         <a class="btn btn-default <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Comment</a>
-                        <?php if ($_SESSION['username'] == $post['username']) {echo '<a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';} ?>
+                        <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $post['username']) {echo '<a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';} ?>
                     </div>
                 </div>
             </div>
