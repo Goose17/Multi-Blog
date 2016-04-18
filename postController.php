@@ -15,14 +15,16 @@ if (isset($_POST['task'])){
         if ($_POST['task'] == 'addPost' && isset($_POST['title']) && isset($_POST['content'])) {
            
            require_once('models/posts.php');
-           addPost($_POST['title'], $_POST['content'], $_SESSION['userName'], $db);
+           addPost($_POST['title'], $_POST['content'], $_SESSION['username'], $db);
+           header('Location: index.php');
+           exit();
            
         }
         
         if ($_POST['task'] == 'addComment' && isset($_POST['parent']) && isset($_POST['content'])) {
            
            require_once('models/posts.php');
-           addComment($_POST['parent'], $_POST['content'], $_SESSION['userName'], $db);
+           addComment($_POST['parent'], $_POST['content'], $_SESSION['username'], $db);
            
         }
         

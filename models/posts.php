@@ -1,11 +1,11 @@
 <?php
 
 function request($db) {
-    $table = $db->query('select * from Posts order by time_stamp;'); 
+    $table = $db->query('select * from Posts order by time_stamp desc;'); 
     return $table;
 }
     
-function addPost($title, $content, $userName, $db){
+function addPost($title, $content, $userName, $db) {
             
     $insert = $db->prepare('insert into Posts(title, content, username) values(:title, :content, :username);');
     $insert->bindParam(':title', $title, PDO::PARAM_STR);
