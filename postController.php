@@ -32,6 +32,8 @@ if (isset($_POST['task'])){
            
            require_once('models/posts.php');
            drop($_POST['postid'], $db);
+           header('Location: index.php');
+           exit();
            
         }
         
