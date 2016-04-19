@@ -4,8 +4,9 @@
                     <h4>Register</h4>
                     <?php if (isset($failed_register_message)) { echo "<div class='alert alert-danger' role='alert'><p>$failed_register_message</p></div>";} ?>
                     <div class="form-group">
-                        <label for="username-signup control-label">Username</label>
+                        <label for="username-signup" class="control-label">Username</label>
                         <input type="text" class="form-control" id="username-signup" placeholder="Username" name="username_register">
+                        <p class="hidden control-label">Must have a username.</p>
                     </div>
                     <div class="form-group">
                         <label for="password-signup" class="control-label">Password</label>

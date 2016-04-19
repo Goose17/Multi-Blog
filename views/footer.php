@@ -38,13 +38,26 @@
             });
             
             // Effects for mismatching passwords.
-            $('#password-confirm-signup').on('keyup', function() {
-               if ($(this).val() != $('#password-signup').val()) {
-                    $(this).parent().addClass('has-error');
+            $('body').on('mouseover', function() {
+                var confirm = $('#password-confirm-signup');
+                if ($('#password-signup').val()) {
+                    if (confirm.val() != $('#password-signup').val()) {
+                        confirm.parent().addClass('has-error');
+                        confirm.siblings('p').removeClass('hidden');
+                    } else {
+                        confirm.parent().removeClass('has-error');
+                        confirm.siblings('p').addClass('hidden');
+                    }
+                }
+            });
+            
+            $('#username-signup').on('mouseenter mouseleave', function() {
+               if (!$(this).val() || $(this).val().length < 1) {
                     $(this).siblings('p').removeClass('hidden');
+                    $(this).parent().addClass('has-warning');
                } else {
-                    $(this).parent().removeClass('has-error');
                     $(this).siblings('p').addClass('hidden');
+                    $(this).parent().removeClass('has-warning');
                }
             });
             
