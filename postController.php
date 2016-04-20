@@ -18,7 +18,6 @@ if (isset($_POST['task'])){
            addPost($_POST['title'], $_POST['content'], $_SESSION['username'], $db);
            header('Location: index.php');
            exit();
-           
         }
         
         if ($_POST['task'] == 'addComment' && isset($_POST['parent']) && isset($_POST['content'])) {
@@ -41,5 +40,11 @@ if (isset($_POST['task'])){
 }
 
 require('views/user-header.php');
-require('views/create-post-form.php');
+if (isset($_POST['task']) && isset($db) && $_POST['task'] == 'addComment') {
+    require_once('models/posts.php');
+    $post = requestOne($_POST['postid'], $db);
+    require('views/create-comment-form.php');
+} else {
+    require('views/create-post-form.php');
+}
 require('views/footer.php');

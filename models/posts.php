@@ -4,6 +4,13 @@ function request($db) {
     $table = $db->query('select * from Posts order by time_stamp desc;'); 
     return $table;
 }
+
+function requestOne($postid, $db) {
+    $request = $db->prepare('select * from Posts where post_id=:id;');
+    $request->bindParam(':id', $postid, PDO::PARAM_INT);
+    $post = $request->execute();
+    return $post;
+}
     
 function addPost($title, $content, $userName, $db) {
             
