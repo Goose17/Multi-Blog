@@ -32,7 +32,7 @@ function sign_in($db, $username, $password) {
     
     // Check if passwords match.
     $user = $select->fetch(PDO::FETCH_ASSOC);
-    return (isset($user) && password_verify($password, $user['password'])) ? $user['username'] : null;
-    
+    return (isset($user) && password_verify($password, $user['password'])) ? $user['username'] : null;    
 }
+
 ?>

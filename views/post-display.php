@@ -7,7 +7,7 @@
                     <small><?php echo htmlentities($post['username']); ?></small>
                     <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
                     <div class="pull-right">
-                        <small id="time-stamp"><?php echo htmlentities($post['time_stamp']); ?></small>
+                        <small id="time-stamp"><?php echo htmlentities(date('m/d/Y - g:ia', strtotime($post['time_stamp']))); ?></small>
                     </div>
                 </div>
                 <div class="panel-body">

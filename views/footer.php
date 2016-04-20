@@ -20,6 +20,20 @@
                 return username && password && confirm;
             }
             
+            function confirm() {
+                var password = $('#password-signup');
+                var confirm = $('#password-confirm-signup');
+                if (password.val()) {
+                    if (confirm.val() != password.val()) {
+                        confirm.parent().addClass('has-error');
+                        confirm.siblings('p').removeClass('hidden');
+                    } else {
+                        confirm.parent().removeClass('has-error');
+                        confirm.siblings('p').addClass('hidden');
+                    }
+                }
+            }
+            
             // Makes sure we can't submit a form before all fields are good to go.
             $(document).on('mouseover', function() {
                 var button = $('#signup-submit');
@@ -38,27 +52,22 @@
             });
             
             // Effects for mismatching passwords.
-            $('body').on('mouseover', function() {
-                var confirm = $('#password-confirm-signup');
-                if ($('#password-signup').val()) {
-                    if (confirm.val() != $('#password-signup').val()) {
-                        confirm.parent().addClass('has-error');
-                        confirm.siblings('p').removeClass('hidden');
-                    } else {
-                        confirm.parent().removeClass('has-error');
-                        confirm.siblings('p').addClass('hidden');
-                    }
+            $(document).on('mouseover', function() {
+                if ($('#password-confirm-signup').val()) {
+                    confirm();
                 }
             });
             
-            $('#username-signup').on('mouseenter mouseleave', function() {
-               if (!$(this).val() || $(this).val().length < 1) {
-                    $(this).siblings('p').removeClass('hidden');
-                    $(this).parent().addClass('has-warning');
-               } else {
-                    $(this).siblings('p').addClass('hidden');
-                    $(this).parent().removeClass('has-warning');
-               }
+            $('#password-confirm-signup').on('keyup', function() {
+                if ($(this).val()) {
+                    confirm();
+                }
+            });
+            
+            $('#password-signup').on('keyup', function() {
+                if ($('#password-confirm-signup').val() ) {
+                    confirm();
+                }
             });
             
         });
