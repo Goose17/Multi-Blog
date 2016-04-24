@@ -26,13 +26,13 @@ function register_user($db, $username, $password) {
 function sign_in($db, $username, $password) {
     
     // Find specific user in the database.
-    $select = $db->prepare('select username, password, admin_status from Users where username=:uname;');
+    $select = $db->prepare('select username, password from Users where username=:uname;');
     $select->bindParam(':uname', $username, PDO::PARAM_STR);
     $select->execute();
     
     // Check if passwords match.
     $user = $select->fetch(PDO::FETCH_ASSOC);
-    return (isset($user) && password_verify($password, $user['password'])) ? $user : null;    
+    return (isset($user) && password_verify($password, $user['password'])) ? $user['username'] : null;    
 }
 
 ?>

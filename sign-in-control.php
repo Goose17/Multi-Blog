@@ -16,8 +16,7 @@ if (isset($_POST['username_login'])) {
     
     // If login was successful redirect to home page
     if (isset($signin)) {
-        $_SESSION['username'] = $signin['username'];
-        $_SESSION['admin_status'] = $signup['admin_status'];
+        $_SESSION['username'] = $signin;
         header('Location: index.php');
         exit();
     }
