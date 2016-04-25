@@ -16,7 +16,8 @@ if (isset($_POST['username_login'])) {
     
     // If login was successful redirect to home page
     if (isset($signin)) {
-        $_SESSION['username'] = $signin;
+        $_SESSION['username'] = $signin['username'];
+        $_SESSION['admin_status'] = isset($signin['admin_status']) ? $signin['admin_status'] : 'not set';
         header('Location: index.php');
         exit();
     }
@@ -28,7 +29,7 @@ if (isset($_POST['username_login'])) {
 if (isset($_POST['username_register'])) {
     
     // Attempt to register a new user.
-    $register = register_user($db, $_POST['username_register'], $_POST['password_register']);
+    $register = register_user($db, trim($_POST['username_register']), $_POST['password_register']);
     
     // If registration was successful redirect to index.php
     if ($register) {
