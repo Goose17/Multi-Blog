@@ -8,8 +8,8 @@ function request($db) {
 function requestOne($postid, $db) {
     $request = $db->prepare('select * from Posts where post_id=:id;');
     $request->bindParam(':id', $postid, PDO::PARAM_INT);
-    $post = $request->execute();
-    return $post;
+    $request->execute();
+    return ($request -> fetch(PDO::FETCH_ASSOC));
 }
     
 function addPost($title, $content, $userName, $db) {
@@ -21,10 +21,11 @@ function addPost($title, $content, $userName, $db) {
     $insert->execute();
 }
 
-function addComment($parent, $content, $userName, $db){
+function addComment($title, $parent, $content, $userName, $db){
             
-    $insert = $db->prepare('insert into Posts(parent, content, username) values(:parent, :content, :username);');
-    $insert->bindParam(':parent', $title, PDO::PARAM_INT);
+    $insert = $db->prepare('insert into Posts(title, parent, content, username) values(:title, :parent, :content, :username);');
+    $insert->bindParam(':title', $title, PDO::PARAM_STR);
+    $insert->bindParam(':parent', $parent, PDO::PARAM_INT);
     $insert->bindParam(':content', $content, PDO::PARAM_STR);
     $insert->bindParam(':username', $userName, PDO::PARAM_STR);
     $insert->execute();

@@ -3,30 +3,29 @@
                 <div class="container">
                     <div class="panel panel-info" id="panel-info">
                         <div class="panel-heading">
-                            <h3><?php echo isset($post); ?></h3>
-                            <h3><?php echo htmlentities($post['title']); ?></h3>
-                            <small><?php echo htmlentities($post['username']); ?></small>
-                            <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
+                            <h3><?php echo htmlentities($singlePost['title']); ?></h3>
+                            <small><?php echo htmlentities($singlePost['username']); ?></small>
+                            <input type="hidden" name="postid" value="<?php echo htmlentities($singlePost['post_id']); ?>">
                             <div class="pull-right">
-                                <small id="time-stamp"><?php echo htmlentities(date('m/d/Y - g:ia', strtotime($post['time_stamp']))); ?></small>
+                                <small id="time-stamp"><?php echo htmlentities(date('m/d/Y - g:ia', strtotime($singlePost['time_stamp']))); ?></small>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <p><?php echo htmlentities($post['content']); ?></p>
+                            <p><?php echo htmlentities($singlePost['content']); ?></p>
                         </div>
                         <div class="panel-footer">
                             <a class="btn btn-default" role="button" id="thumbs-up"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
                             <a class="btn btn-default" role="button" id="thumbs-down"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
-                            <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
-                            <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
+                            <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($singlePost['rating']); ?></strong>
+                            <input type="hidden" name="rating" value="<?php echo htmlentities($singlePost['rating']); ?>">
                             <div class="pull-right">
                                 <!-- I'm thinking we show number of flags to admins only? -->
                                 <!-- Not a bad idea. I'm displaying them here for production purposes. -->
                                 <a class="btn btn-default pull-right" role="button" id="flag"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
                                 <div class="pull-right" style="padding: 7px">
-                                    <strong id="flag-number" ><?php echo htmlentities($post['flags']); ?></strong>
+                                    <strong id="flag-number" ><?php echo htmlentities($singlePost['flags']); ?></strong>
                                 </div>
-                                <input type="hidden" name="flags" value="<?php echo htmlentities($post['flags']); ?>">
+                                <input type="hidden" name="flags" value="<?php echo htmlentities($singlePost['flags']); ?>">
                             </div>
                         </div>
                     </div>
@@ -45,6 +44,7 @@
                         <input type="submit" class="btn btn-primary" value="Post">
                     </div>
                     <input type="hidden" name="task" value="addComment">
+                    <input type="hidden" name="parent" value="<?php echo htmlentities($singlePost['post_id']); ?>">
                 </form>
             </div>
         </div>
