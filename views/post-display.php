@@ -14,8 +14,8 @@
                     <p><?php echo htmlentities($post['content']); ?></p>
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-default" role="button" id="thumbs-up"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
-                    <a class="btn btn-default" role="button" id="thumbs-down"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
+                    <button class="btn btn-default" role="button" id="thumbs-up" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+                    <button class="btn btn-default" role="button" id="thumbs-down" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
                     <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
                     <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
                     <div class="pull-right">
@@ -33,7 +33,7 @@
                         </form>
                         <!-- I'm thinking we show number of flags to admins only? -->
                         <!-- Not a bad idea. I'm displaying them here for production purposes. -->
-                        <a class="btn btn-default pull-right" role="button" id="flag"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                        <button class="btn btn-default pull-right" role="button" id="flag" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>
                         <div class="pull-right" style="padding: 7px">
                             <strong id="flag-number" ><?php echo htmlentities($post['flags']); ?></strong>
                         </div>

@@ -10,6 +10,7 @@ $(document).ready(function() {
       if (response == "ratingUp successful") {
         var newRating = rating + 1;
         button.parent().find('#rating-number').html(newRating);
+        button.attr("disabled", "disabled");
       };
     });
   });
@@ -24,6 +25,7 @@ $(document).ready(function() {
       if (response == "ratingDown successful") {
         var newRating = rating - 1;
         button.parent().find('#rating-number').html(newRating);
+        button.attr("disabled", "disabled");
       };
     });
   });
@@ -38,6 +40,7 @@ $(document).ready(function() {
       if (response == "flag successful") {
         var newFlags = flags + 1;
         button.parent().find('#flag-number').html(newFlags);
+        button.attr("disabled", "disabled");
       };
     });
   });
