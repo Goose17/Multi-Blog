@@ -10,7 +10,7 @@ function register_user($db, $username, $password) {
         if ($username == $user['username']) {
             return false;
         }
-    } 
+    }
     
     // If none of the usernames in the database are the same as the one entered then add it.
     // DEFAULT ADD AS NON-ADMIN USER.
@@ -21,18 +21,24 @@ function register_user($db, $username, $password) {
 }
 
 /*
- * Returns the username of the user logging in if they have an account and null otherwise.
+ * Returns the username and admin status of the user logging in if they have an account and null otherwise.
 */
 function sign_in($db, $username, $password) {
     
     // Find specific user in the database.
-    $select = $db->prepare('select username, password from Users where username=:uname;');
+    $select = $db->prepare('select username, password, admin_status from Users where username=:uname;');
     $select->bindParam(':uname', $username, PDO::PARAM_STR);
     $select->execute();
     
     // Check if passwords match.
     $user = $select->fetch(PDO::FETCH_ASSOC);
-    return (isset($user) && password_verify($password, $user['password'])) ? $user['username'] : null;    
+    if (isset($user)) {
+        $uname = $user['username'];
+        $admin = $user['admin_status'];
+        return array('username' => $uname, 'admin_status' => $admin);
+    } else {
+        return null;
+    }
 }
 
 ?>

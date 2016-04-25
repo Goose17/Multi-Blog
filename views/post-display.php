@@ -22,7 +22,7 @@
                         <form action="postController.php" method="post" class="pull-right">
                             <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
                             <input type="hidden" name="task" value="dropPost">
-                            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $post['username']) {
+                            <?php if ((isset($_SESSION['username']) && $_SESSION['username'] == $post['username']) || (isset($_SESSION['admin_status']) && $_SESSION['admin_status'] == 1)) {
                                 echo '<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
                             } ?>
                         </form>
@@ -31,8 +31,6 @@
                             <input type="hidden" name="task" value="addComment">
                             <button type="submit" class="btn btn-default" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Comment</button>
                         </form>
-                        <!-- I'm thinking we show number of flags to admins only? -->
-                        <!-- Not a bad idea. I'm displaying them here for production purposes. -->
                         <a class="btn btn-default pull-right" role="button" id="flag"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
                         <div class="pull-right" style="padding: 7px">
                             <strong id="flag-number" ><?php echo htmlentities($post['flags']); ?></strong>
