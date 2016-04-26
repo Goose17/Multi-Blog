@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Returns false if username is taken and true if username is eligible and has been entered into Users table.
 */
@@ -41,6 +42,13 @@ function sign_in($db, $username, $password) {
     }
 }
 
+/*
+ * Returns an integer to determine what happened when trying to add admin status to an account.
+ * 0 = successful status change
+ * 1 = password of current admin was incorrect
+ * 2 = admin status was already granted to the user
+ * 3 = username entered was not registered
+*/
 function grant_admin($db, $username, $adminname, $password) {
     
     // Make sure admin password is good to go.
@@ -53,8 +61,8 @@ function grant_admin($db, $username, $adminname, $password) {
     }
     
     // Make sure admin status isn't already granted.
-    $admincheck = $db->prepare('select admin_status from Users where username=:usname');
-    $admincheck->bindParam(':usname', $username, PDO::PARAM_STR);
+    $admincheck = $db->prepare('select admin_status from Users where username=:uname');
+    $admincheck->bindParam(':uname', $username, PDO::PARAM_STR);
     $admincheck->execute();
     $check = $admincheck->fetch(PDO::FETCH_ASSOC);
     if (isset($check['admin_status']) && $check['admin_status'] == 1) {
@@ -68,6 +76,42 @@ function grant_admin($db, $username, $adminname, $password) {
     $update->bindParam(':uname', $username, PDO::PARAM_STR);
     return $update->execute() ? 0 : 3;
 
+}
+
+/*
+ * Returns an integer to determine if disabling admin status of a user was successful.
+ * 0 = successful status change
+ * 1 = password of current admin isn't correct
+ * 2 = user wasn't an admin before
+ * 3 = username isn't registered
+*/
+function disable_admin($db, $username, $adminname, $password) {
+    
+    // Make sure admin password is good to go.
+    $confirm = $db->prepare('select password from Users where username=:uname;');
+    $confirm->bindParam(':uname', $adminname, PDO::PARAM_STR);
+    $confirm->execute();
+    $compare = $confirm->fetch(PDO::FETCH_ASSOC);
+    if (!password_verify($password, $compare['password'])) {
+        return 1;
+    }
+    
+    // Make sure admin status isn't already granted.
+    $admincheck = $db->prepare('select admin_status from Users where username=:uname');
+    $admincheck->bindParam(':uname', $username, PDO::PARAM_STR);
+    $admincheck->execute();
+    $check = $admincheck->fetch(PDO::FETCH_ASSOC);
+    if (isset($check['admin_status']) && $check['admin_status'] == 0) {
+        return 2;
+    } else if (!isset($check['admin_status'])) {
+        return 3;
+    }
+    
+    // If both conditions are all set we 
+    $update = $db->prepare('update Users set admin_status=0 where username=:uname');
+    $update->bindParam(':uname', $username, PDO::PARAM_STR);
+    return $update->execute() ? 0 : 3;
+    
 }
 
 ?>
