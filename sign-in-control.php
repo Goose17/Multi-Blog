@@ -44,4 +44,4 @@ if (isset($_POST['username_register'])) {
 
 require('views/header.php');
 require('views/sign-in-register-forms.php');
-require('views/footer.php');
+require('views/login-register-footer.php');

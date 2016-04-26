@@ -10,6 +10,9 @@
         <nav class="navbar-default navbar navbar-fixed-top">
             <div class="container">
                 <a href="index.php" class="navbar-brand">Home</a>
+                <?php if (isset($_SESSION['admin_status']) && $_SESSION['admin_status'] == 1) {
+                    echo '<a href="admin-control.php"><button class="navbar-btn btn btn-warning">Edit Administrative Rights</button></a>';
+                } ?>
                 <div class="navbar-right">
                     <p class="navbar-text"><?php echo $_SESSION['username']; ?></p>
                     <a href="postController.php"><button class="navbar-btn btn btn-primary">Create Post</button></a>

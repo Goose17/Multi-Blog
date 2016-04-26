@@ -18,7 +18,7 @@
                         <input type="password" class="form-control" id="password-confirm-signup" placeholder="Confirm Password">
                         <p class="hidden control-label">Passwords do not match.</p>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Submit" id="signup-submit" disabled="true">
+                    <input type="submit" class="btn btn-primary" value="Register" id="signup-submit" disabled="true">
                 </form>
                 <form method="post" action="sign-in-control.php" class="col-sm-12 col-md-6">
                     <h4>Login</h4>
