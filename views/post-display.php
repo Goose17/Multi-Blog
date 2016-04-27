@@ -18,10 +18,14 @@
                     <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
                     <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
                     <form action="postController.php" method="post" class="pull-right">
-                        <strong style="margin-right: 10px;"><?php if (isset($post['flags'])) { echo htmlentities($post['flags']); } ?></strong>
+                        <strong name="flag-count" style="margin-right: 10px;"><?php if (isset($post['flags'])) { echo htmlentities($post['flags']); } ?></strong>
                         <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
                         <input type="hidden" name="parent" value="<?php if (isset($post['parent'])) {echo htmlentities($post['parent']);}?>">
-                        <span class="<?php if (!isset($_SESSION['username'])) {echo "disabled";} ?> glyphicon glyphicon-flag btn btn-default" aria-hidden="true"></span>
+                        <?php if ((isset($_SESSION['username'])) && (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['flagged'] == 1)) {
+                            echo '<span id="flag-up" class="<?php if (!isset($_SESSION["username"])) {echo "disabled";} ?> glyphicon glyphicon-flag btn btn-default" aria-hidden="true"></span>';
+                        } else {
+                            echo '<span id="flag-up" class="<?php if (!isset($_SESSION["username"])) {echo "disabled";} ?> glyphicon glyphicon-flag btn btn-default" aria-hidden="true"></span>';
+                        }?>
                         <button name="task" class="btn btn-default" value="addComment" <?php if (!isset($_SESSION['username'])) {echo 'disabled'; } ?>><span class="glyphicon glyphicon-pencil"></span> Comment</button>
                         <?php if (isset($_SESSION['admin_status'], $_SESSION['username']) && ($_SESSION['admin_status'] == 1 || $_SESSION['username'] == $post['username'])) {
                             echo '<button name="task" class="btn btn-danger" value="dropPost"><span class="glyphicon glyphicon-trash"></span></button>';
