@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!isset($_SESSION['username'])){
+    header('Location: index.php');
+    exit();
+}
+
 if (isset($_POST['task'])){
 
     // Connect to database
@@ -30,8 +35,9 @@ if (isset($_POST['task'])){
         
         elseif ($_POST['task'] == 'flagUp' && isset($_POST['postid'])) {
            
+           
            require_once('models/posts.php');
-           flagUp($_POST['postid'], $db);
+           flagUp($_SESSION['username'], $_POST['postid'], $db);
            
            echo("flag successful");
         }

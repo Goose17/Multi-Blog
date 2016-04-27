@@ -52,11 +52,16 @@ function ratingDown($postid, $db){
     $insert->execute();
 }
 
-function flagUp($postid, $db){
+function flagUp($userName, $postid, $db){
             
     $insert = $db->prepare('update Posts set flags = flags + 1 where post_id=:id;');
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
+    
+    $flag_record = $db->prepare('insert into Post_Ratings(username, post_id, flagged) values(:username, :postid, 1;');
+    $flag_record->bindParam(':username', $userName, PDO::PARAM_STR);
+    $flag_record->bindParam(':postid', $postid, PDO::PARAM_INT);
+    $flag_record->execute();
 }
 
 function removeFlags($postid, $db){
@@ -64,4 +69,12 @@ function removeFlags($postid, $db){
     $insert = $db->prepare('update Posts set flags = 0 where post_id=:id;');
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
+}
+
+function requestRatings($userName, $postid, $db) {
+    $request = $db->prepare('select * from Post_Ratings where username=:username and post_id=:id;');
+    $request->bindParam(':username', $userName, PDO::PARAM_STR);
+    $request->bindParam(':id', $postid, PDO::PARAM_INT);
+    $request->execute();
+    return ($request -> fetch(PDO::FETCH_ASSOC));
 }
