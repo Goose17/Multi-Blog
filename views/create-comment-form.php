@@ -19,8 +19,6 @@
                             <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($singlePost['rating']); ?></strong>
                             <input type="hidden" name="rating" value="<?php echo htmlentities($singlePost['rating']); ?>">
                             <div class="pull-right">
-                                <!-- I'm thinking we show number of flags to admins only? -->
-                                <!-- Not a bad idea. I'm displaying them here for production purposes. -->
                                 <a class="btn btn-default pull-right" role="button" id="flag"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
                                 <div class="pull-right" style="padding: 7px">
                                     <strong id="flag-number" ><?php echo htmlentities($singlePost['flags']); ?></strong>

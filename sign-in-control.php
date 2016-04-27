@@ -17,7 +17,7 @@ if (isset($_POST['username_login'])) {
     // If login was successful redirect to home page
     if (isset($signin)) {
         $_SESSION['username'] = $signin['username'];
-        $_SESSION['admin_status'] = isset($signin['admin_status']) ? $signin['admin_status'] : 'not set';
+        $_SESSION['admin_status'] = isset($signin['admin_status']) ? $signin['admin_status'] : null;
         header('Location: index.php');
         exit();
     }
@@ -34,6 +34,7 @@ if (isset($_POST['username_register'])) {
     // If registration was successful redirect to index.php
     if ($register) {
         $_SESSION['username'] = $_POST['username_register'];
+        $_SESSION['admin_status'] = 0;
         header('Location: index.php');
         exit();
     }
