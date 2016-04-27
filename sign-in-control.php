@@ -18,6 +18,7 @@ if (isset($_POST['username_login'])) {
     if (isset($signin)) {
         $_SESSION['username'] = $signin['username'];
         $_SESSION['admin_status'] = isset($signin['admin_status']) ? $signin['admin_status'] : null;
+        
         header('Location: index.php');
         exit();
     }

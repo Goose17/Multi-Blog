@@ -2,8 +2,9 @@
 
 session_start();
 
-unset($_SESSION['username']);
-unset($_SESSION['admin_status']);
+$_SESSION = array();
+setcookie(session_name(), FALSE);
+session_destroy();
 
 header('Location: index.php');
 exit();
