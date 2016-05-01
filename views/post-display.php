@@ -13,18 +13,39 @@
                     <p><?php echo htmlentities($post['content']); ?></p>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-default" role="button" id="thumbs-up" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
-                    <button class="btn btn-default" role="button" id="thumbs-down" <?php if (!isset($_SESSION['username'])) {echo "disabled";} ?>><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+                    <?php if (isset($_SESSION['username'])) {
+                        if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == 1) {
+                            echo ('<button id="thumbs-up" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
+                        } else {
+                            echo ('<button id="thumbs-up enabled" role="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
+                        }
+                    } else {
+                        echo ('<button id="thumbs-up" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
+                    }
+                    
+                    if (isset($_SESSION['username'])) {
+                        if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == -1) {
+                            echo ('<button id="thumbs-down" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                        } else {
+                            echo ('<button id="thumbs-down enabled" role="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                        }
+                    } else {
+                        echo ('<button id="thumbs-down" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                    }?>
                     <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
                     <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
                     <form action="postController.php" method="post" class="pull-right">
                         <strong name="flag-count" style="margin-right: 10px;"><?php if (isset($post['flags'])) { echo htmlentities($post['flags']); } ?></strong>
                         <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
                         <input type="hidden" name="parent" value="<?php if (isset($post['parent'])) {echo htmlentities($post['parent']);}?>">
-                        <?php if ((isset($_SESSION['username'])) && (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['flagged'] == 1)) {
-                            echo '<span id="flag-up" class="<?php if (!isset($_SESSION["username"])) {echo "disabled";} ?> glyphicon glyphicon-flag btn btn-default" aria-hidden="true"></span>';
+                        <?php if (isset($_SESSION['username'])) {
+                            if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['flagged'] == 1) {
+                                echo ('<button id="flag-up" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
+                            } else {
+                                echo ('<button id="flag-up enabled" role="button" class="btn btn-default"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
+                            }
                         } else {
-                            echo '<span id="flag-up" class="<?php if (!isset($_SESSION["username"])) {echo "disabled";} ?> glyphicon glyphicon-flag btn btn-default" aria-hidden="true"></span>';
+                            echo ('<button id="flag-up" role="button" class="btn btn-default disabled"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
                         }?>
                         <button name="task" class="btn btn-default" value="addComment" <?php if (!isset($_SESSION['username'])) {echo 'disabled'; } ?>><span class="glyphicon glyphicon-pencil"></span> Comment</button>
                         <?php if (isset($_SESSION['admin_status'], $_SESSION['username']) && ($_SESSION['admin_status'] == 1 || $_SESSION['username'] == $post['username'])) {

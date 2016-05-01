@@ -20,7 +20,7 @@ if (isset($_POST['task'])){
         if ($_POST['task'] == 'ratingUp' && isset($_POST['postid'])) {
            
            require_once('models/posts.php');
-           ratingUp($_POST['postid'], $db);
+           ratingUp($_SESSION['username'], $_POST['postid'], $db);
            
            echo("ratingUp successful");
         }
@@ -28,18 +28,17 @@ if (isset($_POST['task'])){
         elseif ($_POST['task'] == 'ratingDown' && isset($_POST['postid'])) {
            
            require_once('models/posts.php');
-           ratingDown($_POST['postid'], $db);
+           ratingDown($_SESSION['username'], $_POST['postid'], $db);
            
            echo("ratingDown successful");
         }
         
         elseif ($_POST['task'] == 'flagUp' && isset($_POST['postid'])) {
            
-           
            require_once('models/posts.php');
            flagUp($_SESSION['username'], $_POST['postid'], $db);
            
-           echo("flag successful");
+           echo("flagUp successful");
         }
         
     }
