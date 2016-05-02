@@ -21,7 +21,7 @@ create table Posts (
 	time_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	post_id INT AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) NOT NULL,
-	parent INT DEFAULT NULL
+	parent INT DEFAULT 0
 );
 
 alter table Posts add FOREIGN KEY(username) references Users(username);
@@ -40,7 +40,6 @@ create table Post_Ratings (
 
 alter table Post_Ratings add INDEX(post_id);
 alter table Post_Ratings add CONSTRAINT unique_index UNIQUE (username, post_id);
-
 
 insert into Users(username, admin_status, password) values("Master Chief", 0, "Is Cool");
 insert into Users(username, admin_status, password) values("Samus Aran", 0, "Is Cooler");

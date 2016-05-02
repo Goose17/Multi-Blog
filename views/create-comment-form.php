@@ -37,7 +37,7 @@
                             <input type="text" class="form-control col-sm-12" id="title" placeholder="Title" name="title">
                         </div>
                         <div class="row container" style="padding-top: 15px; padding-bottom:15px;">
-                            <textarea class="col-sm-12" name="content" form="create-post" style="min-height: 500px; border-radius: 5px;" placeholder="Enter post..."></textarea>
+                            <textarea class="col-sm-12" name="content" form="create-post" style="min-height: 300px;" placeholder="Enter post..."></textarea>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Post">
                     </div>
