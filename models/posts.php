@@ -44,7 +44,7 @@ function ratingUp($userName, $postid, $db){
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
     
-    $up_record = $db->prepare('insert into Post_Ratings(username, post_id, rating) values(:username, :postid, 1) on DUPLICATE KEY update rating = 1;');
+    $up_record = $db->prepare('insert into Post_Ratings(username, post_id, rating) values(:username, :postid, 1) on DUPLICATE KEY update rating = rating + 1;');
     $up_record->bindParam(':username', $userName, PDO::PARAM_STR);
     $up_record->bindParam(':postid', $postid, PDO::PARAM_INT);
     $up_record->execute();
@@ -56,7 +56,7 @@ function ratingDown($userName, $postid, $db){
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
     
-    $down_record = $db->prepare('insert into Post_Ratings(username, post_id, rating) values(:username, :postid, -1) on DUPLICATE KEY update rating = -1;');
+    $down_record = $db->prepare('insert into Post_Ratings(username, post_id, rating) values(:username, :postid, -1) on DUPLICATE KEY update rating = rating -1;');
     $down_record->bindParam(':username', $userName, PDO::PARAM_STR);
     $down_record->bindParam(':postid', $postid, PDO::PARAM_INT);
     $down_record->execute();
@@ -68,7 +68,7 @@ function flagUp($userName, $postid, $db){
     $insert->bindParam(':id', $postid, PDO::PARAM_INT);
     $insert->execute();
     
-    $flag_record = $db->prepare('insert into Post_Ratings(username, post_id, flagged) values(:username, :postid, 1);');
+    $flag_record = $db->prepare('insert into Post_Ratings(username, post_id, flagged) values(:username, :postid, 1) on DUPLICATE KEY update flagged = 1;');
     $flag_record->bindParam(':username', $userName, PDO::PARAM_STR);
     $flag_record->bindParam(':postid', $postid, PDO::PARAM_INT);
     $flag_record->execute();

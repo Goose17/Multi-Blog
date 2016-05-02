@@ -17,7 +17,7 @@
                         if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == 1) {
                             echo ('<button id="thumbs-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
                         } else {
-                            echo ('<button id="thumbs-up enabled" class="btn btn-default" style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
+                            echo ('<button id="thumbs-up" class="btn btn-default" style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
                         }
                     } else {
                         echo ('<button id="thumbs-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
@@ -27,7 +27,7 @@
                         if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == -1) {
                             echo ('<button id="thumbs-down" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
                         } else {
-                            echo ('<button id="thumbs-down enabled" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                            echo ('<button id="thumbs-down" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
                         }
                     } else {
                         echo ('<button id="thumbs-down" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
@@ -46,11 +46,12 @@
                     </form>
                     <div class="pull-right" >
                         <strong name="flag-count" style="margin-right: 10px;"><?php if (isset($post['flags'])) { echo htmlentities($post['flags']); } ?></strong>
+                        <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
                         <?php if (isset($_SESSION['username'])) {
                             if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['flagged'] == 1) {
                                 echo ('<button id="flag-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
                             } else {
-                                echo ('<button id="flag-up enabled" class="btn btn-default" style="margin-right: 5px;"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
+                                echo ('<button id="flag-up" class="btn btn-default" style="margin-right: 5px;"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
                             }
                         } else {
                             echo ('<button id="flag-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
