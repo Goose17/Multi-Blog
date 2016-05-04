@@ -5,15 +5,17 @@ $(document).ready(function() {
     var button = $(this);
     var otherButton = $(this).parent().find('button[id="thumbs-down"]');
     var postid = $(this).parent().find('input[name=postid]').val();
-    var rating = $(this).parent().find('input[name=rating]').val();
+    var rating = $(this).parent().find('strong[id=rating-number]').html();
     rating = parseFloat(rating) ? parseFloat(rating) : rating;
     console.log(rating);
     $.post('incrementController.php', {task:"ratingUp", postid:postid}, function(response){
-      console.log(response)
+      console.log(response);
       if (response == "ratingUp successful") {
         var newRating = rating + 1;
         button.parent().find('#rating-number').html(newRating);
-        button.attr("disabled", "disabled");
+        if (newRating != 0){
+          button.attr("disabled", "disabled");
+        }
         otherButton.removeAttr("disabled");
       };
     });
@@ -24,13 +26,16 @@ $(document).ready(function() {
     var button = $(this);
     var otherButton = $(this).parent().find('button[id="thumbs-up"]');
     var postid = $(this).parent().find('input[name=postid]').val();
-    var rating = $(this).parent().find('input[name=rating]').val();
+    var rating = $(this).parent().find('strong[id=rating-number]').html();
     rating = parseFloat(rating) ? parseFloat(rating) : rating;
     $.post('incrementController.php', {task:"ratingDown", postid:postid}, function(response){
       if (response == "ratingDown successful") {
         var newRating = rating - 1;
         button.parent().find('#rating-number').html(newRating);
-        button.attr("disabled", "disabled");
+        if (newRating != 0){
+          button.attr("disabled", "disabled");
+        }
+        console.log("we're here");
         otherButton.removeAttr("disabled");
       };
     });

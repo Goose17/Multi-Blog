@@ -14,7 +14,7 @@
                     <a class="<?php if (!hasComments($db, $post['post_id'])) {echo 'hidden';} ?>" href="view-comments.php?id=<?php echo $post['post_id']; ?>">See all comments</a>
                 </div>
                 <div class="panel-footer">
-                    <?php if (isset($_SESSION['username'])) {
+                    <?php if (isset($_SESSION['username'])){
                         if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == 1) {
                             echo ('<button id="thumbs-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
                         } else {
@@ -26,12 +26,12 @@
                     
                     if (isset($_SESSION['username'])) {
                         if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == -1) {
-                            echo ('<button id="thumbs-down" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                            echo ('<button id="thumbs-down" class="btn btn-default" disabled><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
                         } else {
                             echo ('<button id="thumbs-down" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
                         }
                     } else {
-                        echo ('<button id="thumbs-down" class="btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
+                        echo ('<button id="thumbs-down" class="btn btn-default" disabled><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>');
                     }?>
                     <strong id="rating-number" style="padding-left: 10px;"><?php echo htmlentities($post['rating']); ?></strong>
                     <input type="hidden" name="rating" value="<?php echo htmlentities($post['rating']); ?>">
