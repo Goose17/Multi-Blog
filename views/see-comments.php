@@ -72,7 +72,7 @@
             <input type="hidden" value="<?php echo htmlentities($comment['post_id']); ?>" name="comment_id">
             <input type="hidden" value="<?php echo htmlentities($comment['parent']); ?>" name="comment_parent">
             <div class="pull-right">
-              <button name="task" value="doubleComment" class="btn btn-default" <?php if (!isset($_SESSION['username'])) {echo 'disabled'; } else {echo 'style="margin-right:10px;"'} ?>><span class="glyphicon glyphicon-pencil"></span> Comment</button>
+              <button name="task" value="doubleComment" class="btn btn-default" <?php if (!isset($_SESSION['username'])) {echo 'style="margin-right: 5px;" '; echo 'disabled'; } else if($_SESSION['username'] != $comment['username']) {echo 'style="margin-right: 5px;"';} ?>><span class="glyphicon glyphicon-pencil"></span> Comment</button>
               <?php if (isset($_SESSION['admin_status'], $_SESSION['username']) && ($_SESSION['admin_status'] == 1 || $_SESSION['username'] == $comment['username'])) {
                   echo '<button name="task" class="btn btn-danger" value="dropPost" style="margin-right: 5px;"><span class="glyphicon glyphicon-trash"></span></button>';
                 } ?>

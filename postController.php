@@ -39,7 +39,8 @@ if (isset($_POST['task']) && isset($db) && isset($_POST['postid']) && $_POST['ta
     require_once('models/posts.php');
     $singlePost = requestOne($_POST['postid'], $db);
     require('views/create-comment-form.php');
+    require('views/footer.php');
 } else {
     require('views/create-post-form.php');
+    require('views/create-post-footer.php');
 }
-require('views/footer.php');

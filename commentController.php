@@ -15,12 +15,12 @@ if (isset($_POST['task']) && $_POST['task'] == 'dropPost') {
   header("Location: view-comments.php?id=" . $_POST['parent']);
   exit();
 } else if ($_POST['task'] == 'doubleComment') {
-  $singlePost = requestOne($_POST['comment_id'], $db);
+  $singlePost = requestOne($_POST['comment_parent'], $db);
   require('views/user-header.php');
   require('views/create-comment-form.php');
   require('views/footer.php');
 } else {
-  $singlepost = isset($_POST['task']) && $_POST['task'] == "addComment" ? requestOne($_POST['comment_id'], $db) : requestOne($_GET['id'], $db);
+  $singlepost = isset($_POST['task']) && $_POST['task'] == "addComment" ? requestOne($_POST['comment_parent'], $db) : requestOne($_GET['id'], $db);
   require(isset($_SESSION['username']) ? 'views/user-header.php' : 'views/header.php');
   require('views/create-comment-form.php');
   require('views/footer.php');

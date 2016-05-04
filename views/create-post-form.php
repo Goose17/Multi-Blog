@@ -2,7 +2,7 @@
             <div class="row">
                 <form method="post" action="postController.php" id="create-post" class="col-sm-12">
                     <h4>Create Post</h4>
-                    <?php if (isset($failed_register_message)) { echo "<div class='alert alert-danger' role='alert'><p>$failed_register_message</p></div>";} ?>
+                    <div class="alert alert-danger hidden" role="alert"><p>Cannot post without a title and content.</p></div>
                     <div class="form-group">
                         <div class="row container">
                             <label for="title">Title</label>
