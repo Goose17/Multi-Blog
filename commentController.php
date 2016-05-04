@@ -18,10 +18,10 @@ if (isset($_POST['task']) && $_POST['task'] == 'dropPost') {
   $singlePost = requestOne($_POST['comment_parent'], $db);
   require('views/user-header.php');
   require('views/create-comment-form.php');
-  require('views/footer.php');
+  require('views/create-comment-footer.php');
 } else {
   $singlepost = isset($_POST['task']) && $_POST['task'] == "addComment" ? requestOne($_POST['comment_parent'], $db) : requestOne($_GET['id'], $db);
   require(isset($_SESSION['username']) ? 'views/user-header.php' : 'views/header.php');
   require('views/create-comment-form.php');
-  require('views/footer.php');
+  require('views/create-comment-footer.php');
 }

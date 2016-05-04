@@ -1,4 +1,4 @@
-    <div class="container">
+    <div class="container" id="post-display">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h3><?php echo htmlentities($post['title']); ?></h3>
