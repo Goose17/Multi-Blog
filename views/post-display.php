@@ -10,7 +10,8 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p><?php echo htmlentities($post['content']); ?></p>
+                    <p><?php echo htmlentities($post['content']); ?></p><?php if (hasComments($db, $post['post_id'])) {echo '<br>';} ?>
+                    <a class="<?php if (!hasComments($db, $post['post_id'])) {echo 'hidden';} ?>" href="view-comments.php?id=<?php echo $post['post_id']; ?>">See all comments</a>
                 </div>
                 <div class="panel-footer">
                     <?php if (isset($_SESSION['username'])) {

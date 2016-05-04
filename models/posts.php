@@ -1,8 +1,9 @@
 <?php
 
 function request($db) {
-    $table = $db->query('select * from Posts order by time_stamp desc;'); 
-    return $table;
+    $table = $db->prepare('select * from Posts where parent=0 order by time_stamp desc;');
+    $table->execute();
+    return $table->fetchAll();
 }
 
 function requestOne($postid, $db) {
@@ -87,4 +88,19 @@ function requestRatings($userName, $postid, $db) {
     $request->bindParam(':id', $postid, PDO::PARAM_INT);
     $request->execute();
     return ($request -> fetch(PDO::FETCH_ASSOC));
+}
+
+function requestComments($db, $opid) {
+    $comment_query = $db->prepare("select * from Posts where parent=:opid order by time_stamp desc;");
+    $comment_query->bindParam(':opid', $opid, PDO::PARAM_INT);
+    $comment_query->execute();
+    return $comment_query->fetchAll();
+}
+
+function hasComments($db, $opid) {
+    $comment_query = $db->prepare("select count(*) as rows from Posts where parent=:opid;");
+    $comment_query->bindParam(':opid', $opid, PDO::PARAM_INT);
+    $comment_query->execute();
+    $num = $comment_query->fetch(PDO::FETCH_ASSOC)['rows'];
+    return $num > 0;
 }
