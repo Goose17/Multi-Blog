@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <form method="post" action="postController.php" id="create-post" class="col-sm-12">
+                <form method="post" action="commentController.php" id="create-post" class="col-sm-12">
                     <h4>Comment</h4>
                     <?php if (isset($failed_register_message)) { echo "<div class='alert alert-danger' role='alert'><p>$failed_register_message</p></div>";} ?>
                     <div class="form-group">
