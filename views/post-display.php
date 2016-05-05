@@ -1,7 +1,7 @@
     <div id="post-display">
         <?php foreach ($posts as $post): ?>
         <div class="container">
-            <div class="panel panel-info" id="panel-info">
+            <div class="panel panel-default" id="panel-info">
                 <!-- PANEL HEADING contains the post title, username, and timestamp -->
                 <div class="panel-heading">
                     <h3><?php echo htmlentities($post['title']); ?></h3>
@@ -32,7 +32,7 @@
                     } else {
                         echo ('<button id="thumbs-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>');
                     }
-                    
+
                     /* THUMB DOWN BUTTON */
                     if (isset($_SESSION['username'])) {
                         if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['rating'] == -1) {

@@ -1,7 +1,7 @@
         <div class="container">
             <div class="row">
                 <div class="container">
-                    <div class="panel panel-info" id="panel-info">
+                    <div class="panel panel-default" id="panel-info">
                         <div class="panel-heading">
                             <h3><?php echo htmlentities($singlePost['title']); ?></h3>
                             <small><?php echo htmlentities($singlePost['username']); ?></small>
