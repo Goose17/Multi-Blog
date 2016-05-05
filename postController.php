@@ -8,8 +8,9 @@ if (isset($_POST['task'])) {
     require_once('models/database.php');
     $db = databaseConnection();
 
-    if (!isset($db)) {
-        $error = "Could not connect to the database.";
+    if ($db == 1) {
+        header('Location: index.php');
+        exit();
     } else {
         if ($_POST['task'] == 'addPost' && isset($_POST['title']) && isset($_POST['content'])) {
             require_once('models/posts.php');

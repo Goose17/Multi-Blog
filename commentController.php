@@ -5,6 +5,10 @@ session_start();
 require_once('models/posts.php');
 require_once("models/database.php");
 $db = databaseConnection();
+if ($db == 1) {
+  header('Location: index.php');
+  exit();
+}
 
 if (isset($_POST['task']) && $_POST['task'] == 'dropPost') {
   drop($_POST['comment_id'], $db);

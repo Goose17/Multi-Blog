@@ -4,6 +4,10 @@ session_start();
 
 require_once('models/database.php');
 $db = databaseConnection();
+if ($db == 1) {
+  header('Location: index.php');
+  exit();
+}
 
 if (!isset($_GET['id'])) {
     header('Location: index.php');

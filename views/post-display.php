@@ -13,7 +13,7 @@
                 <!-- PANEL BODY contains the content of the post -->
                 <div class="panel-body">
                     <p><?php echo htmlentities($post['content']); ?></p><?php if (hasComments($db, $post['post_id'])) {echo '<br>';} ?>
-                    <a class="<?php if (!hasComments($db, $post['post_id'])) {echo 'hidden';} ?>" href="view-comments.php?id=<?php echo $post['post_id']; ?>">See all comments</a>
+                    <a class="<?php if (!hasComments($db, $post['post_id'])) {echo 'hidden';} ?>" href="view-comments.php?id=<?php echo htmlentities($post['post_id']); ?>">See all comments</a>
                 </div>
                 <!-- PANEL FOOTER contains the thumb up and thumb down button, the post rating, the number of flags, the flag button, the comment button, the delete post button, and the drop flags button.
                 All buttons are disabled for anyone not logged in.

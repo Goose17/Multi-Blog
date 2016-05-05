@@ -2,10 +2,10 @@
 
 // Return a PDO connection
 function databaseConnection() {
-    
+
     // Connection parameters
     require_once('../mysql.php');
-    
+
     // Attempt connection
     try {
         $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
@@ -13,10 +13,9 @@ function databaseConnection() {
         $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         return $db;
     }
-    
-    // If it doesn't work
+
+    // If it doesn't work redirect to error page.
     catch (PDOException $e) {
-        echo $e->getMessage(); // For development only
-        return NULL;
+        return 1;
     }
 }
