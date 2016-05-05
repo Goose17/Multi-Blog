@@ -16,6 +16,6 @@ function databaseConnection() {
 
     // If it doesn't work redirect to error page.
     catch (PDOException $e) {
-        return 1;
+        return null;
     }
 }

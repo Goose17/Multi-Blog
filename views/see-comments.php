@@ -64,7 +64,7 @@
                 <small><?php echo htmlentities(date('m/d/Y - g:ia', strtotime($comment['time_stamp']))); ?></small>
             </div>
             <div class="col-sm-10">
-              <h4><?php echo htmlentities($comment['title']); ?></h4>
+              <h5><strong><?php echo htmlentities($comment['title']); ?></strong></h5>
               <p><?php echo htmlentities($comment['content']); ?></p>
             </div>
           </div>

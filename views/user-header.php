@@ -12,11 +12,11 @@
             <div class="container">
                 <a href="index.php" class="navbar-brand">Home</a>
                 <ul class="nav navbar-nav">
-                  <li><a href="index.php?about=1"></a></li>
-                </ul>
+                  <li><a href="index.php?about=1">About</a></li>
                 <?php if (isset($_SESSION['admin_status']) && $_SESSION['admin_status'] == 1) {
-                    echo '<a href="admin-control.php"><button class="navbar-btn btn btn-warning">Edit Administrative Rights</button></a>';
+                    echo '<li><a href="admin-control.php">Edit Administrative Rights</a></li>';
                 } ?>
+                </ul>
                 <ul class="navbar-right navbar-nav nav">
                     <li class="navbar-text"><?php echo $_SESSION['username']; ?></li>
                     <li><a href="postController.php">Create Post</a></li>
