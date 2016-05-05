@@ -18,7 +18,8 @@ if (isset($_POST['task'])){
     }
 
     if (!isset($db)) {
-        $error = "Could not connect to the database.";
+        header('Location: index.php');
+        exit();
     } else {
 
         if ($_POST['task'] == 'ratingUp' && isset($_POST['postid'])) {

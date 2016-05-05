@@ -11,6 +11,9 @@
         <nav class="navbar-default navbar navbar-fixed-top">
             <div class="container">
                 <a href="index.php" class="navbar-brand">Home</a>
+                <ul class="nav navbar-nav">
+                  <li><a href="index.php?about=1"></a></li>
+                </ul>
                 <?php if (isset($_SESSION['admin_status']) && $_SESSION['admin_status'] == 1) {
                     echo '<a href="admin-control.php"><button class="navbar-btn btn btn-warning">Edit Administrative Rights</button></a>';
                 } ?>

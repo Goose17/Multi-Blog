@@ -4,7 +4,7 @@ session_start();
 
 require_once('models/database.php');
 $db = databaseConnection();
-if ($db == 1) {
+if (!isset($db)) {
   header('Location: index.php');
   exit();
 }

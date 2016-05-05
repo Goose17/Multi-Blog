@@ -4,6 +4,10 @@ session_start();
 
 require_once('models/database.php');
 $db = databaseConnection();
+if (!isset($db)) {
+  header("Location: index.php");
+  exit();
+}
 
 require_once('models/accounts.php');
 
