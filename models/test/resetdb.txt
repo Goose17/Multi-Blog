@@ -43,6 +43,8 @@ alter table Post_Ratings add CONSTRAINT unique_index UNIQUE (username, post_id);
 
 insert into Users(username, admin_status, password) values("Master Chief", 0, "Is Cool");
 insert into Users(username, admin_status, password) values("Samus Aran", 0, "Is Cooler");
+
+# THIS IS AN ADMIN PROFILE. The password is "admin1" without the quotes.
 insert into Users(username, admin_status, password) values("Admin", 1, "$2y$10$yxIls24mSsyV925g/pDDve9oKxSk5q8ZYMvGlS9Hrkm2hUfCNVosW");
 
 insert into Posts(title, content, rating, flags, username) values("First!", "Let it be known that Master Chief is first in all things.",
