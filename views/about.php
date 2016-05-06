@@ -4,9 +4,9 @@
             <img src="http://cdn.ohmygodfacts.com/wp-content/uploads/2014/10/anfcts-03.jpg" class="img-responsive"></imgsrc>
         </figure>
         <section class="col-sm-9">
-            <h4>Bayard Roberts, 23</h4>
+            <h4>Bayard Roberts</h4>
             <p>
-            Bayard "Papa Smurf" Roberts is an aspiring teenager seeking the fountain of youth.
+            Bayard "Papa Smurf" Roberts, 23, is an aspiring teenager seeking the fountain of youth.
             He likes long walks on the beach, like really long, you should probably bring a tent.
             Bayard grew up on a farm, where he learned how to fly and be superman.
             He hopes to one day have an estranged wife that he can complain about.
