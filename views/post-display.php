@@ -58,8 +58,10 @@
                         }?>
                     </form>
                     <div class="pull-right" >
+                        <!-- FLAG COUNT -->
                         <strong name="flag-count" style="margin-right: 10px;"><?php if (isset($post['flags'])) { echo htmlentities($post['flags']); } ?></strong>
                         <input type="hidden" name="postid" value="<?php echo htmlentities($post['post_id']); ?>">
+                        <!-- FLAG BUTTON -->
                         <?php if (isset($_SESSION['username'])) {
                             if (requestRatings($_SESSION['username'], htmlentities($post['post_id']), $db)['flagged'] == 1) {
                                 echo ('<button id="flag-up" class="btn btn-default" disabled style="margin-right: 5px;"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></button>');
