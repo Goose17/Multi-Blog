@@ -41,15 +41,5 @@ create table Post_Ratings (
 alter table Post_Ratings add INDEX(post_id);
 alter table Post_Ratings add CONSTRAINT unique_index UNIQUE (username, post_id);
 
-insert into Users(username, admin_status, password) values("Master Chief", 0, "Is Cool");
-insert into Users(username, admin_status, password) values("Samus Aran", 0, "Is Cooler");
-
-# THIS IS AN ADMIN PROFILE. The password is "admin1" without the quotes.
+# THIS IS AN ADMIN PROFILE. The password is "admin1" with username "Admin" both without the quotes.
 insert into Users(username, admin_status, password) values("Admin", 1, "$2y$10$yxIls24mSsyV925g/pDDve9oKxSk5q8ZYMvGlS9Hrkm2hUfCNVosW");
-
-insert into Posts(title, content, rating, flags, username) values("First!", "Let it be known that Master Chief is first in all things.",
-1, 0, "Master Chief");
-insert into Posts(title, content, rating, flags, username) values("Lorem ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-0, 0, "Samus Aran");
-insert into Posts(title, content, rating, flags, username, parent) values("stfu", "Come at me scrublord Samus Aran is better",
-0, 1, "Samus Aran", 1);
